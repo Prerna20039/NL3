@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Details</title>
+</head>
+<body>
+  <div class="container">
+    <h1>Add Details to a Developer</h1>
+    <form action="/devdetails" method="POST">
+      <div class="form-group">
+        <label for="developerId">Select Developer:</label>
+        <select name="developerId" id="developerId" required>
+          <% developers.forEach(developer => { %>
+            <option value="<%= developer._id %>"><%= developer.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="categories">Categories:</label>
+        <input type="text" name="categories" id="categories" placeholder="Enter categories separated by commas">
+      </div>
+      <div class="form-group">
+        <label for="imageUrl">Image URL:</label>
+        <input type="text" name="imageUrl" id="imageUrl">
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name">
+      </div>
+      <div class="form-group">
+        <label for="by">By:</label>
+        <input type="text" name="by" id="by">
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" name="location" id="location">
+      </div>
+      <div class="form-group">
+        <label for="price">Price:</label>
+        <input type="text" name="price" id="price">
+      </div>
+      <div class="form-group">
+        <label for="status">Status:</label>
+        <input type="text" name="status" id="status">
+      </div>
+      <div class="form-group">
+        <label for="configuration">Configuration:</label>
+        <input type="text" name="configuration" id="configuration">
+      </div>
+      <div class="form-group">
+        <label for="possession">Possession:</label>
+        <input type="date" name="possession" id="possession">
+      </div>
+      <div class="form-group">
+        <label for="units">Units:</label>
+        <input type="number" name="units" id="units">
+      </div>
+      <div class="form-group">
+        <label for="land">Land:</label>
+        <input type="text" name="land" id="land">
+      </div>
+      <div class="form-group">
+        <label for="residence">Residence:</label>
+        <input type="text" name="residence" id="residence">
+      </div>
+      <div class="form-group">
+        <label for="builtup">Built-up:</label>
+        <input type="text" name="builtup" id="builtup">
+      </div>
+      <div class="form-group">
+        <label for="blocks">Blocks:</label>
+        <input type="text" name="blocks" id="blocks">
+      </div>
+      <div class="form-group">
+        <label for="floor">Floor:</label>
+        <input type="text" name="floor" id="floor">
+      </div>
+      <div class="form-group">
+        <label for="noofunits">No. of Units:</label>
+        <input type="number" name="noofunits" id="noofunits">
+      </div>
+      <div class="form-group">
+        <label for="rera">RERA:</label>
+        <input type="text" name="rera" id="rera">
+      </div>
+      <div class="form-group">
+        <label for="deveIMG">Developer Image URL:</label>
+        <input type="text" name="deveIMG" id="deveIMG">
+      </div>
+      <div class="form-group">
+        <label for="deveName">Developer Name:</label>
+        <input type="text" name="deveName" id="deveName">
+      </div>
+      <div class="form-group">
+        <label for="devedis">Developer Description:</label>
+        <input type="text" name="devedis" id="devedis">
+      </div>
+      <!-- Add more fields as necessary -->
+      <div class="form-group">
+        <label for="highlight">Highlight:</label>
+        <input type="text" name="highlight" id="highlight">
+      </div>
+      <div class="form-group">
+        <label for="point1">Point 1:</label>
+        <input type="text" name="point1" id="point1">
+      </div>
+      <!-- Repeat for additional points -->
+      <div class="form-group">
+        <label for="about">About:</label>
+        <textarea name="about" id="about" rows="4"></textarea>
+      </div>
+      <button type="submit">Add Details</button>
+    </form>
+    <a href="/admin">Back to Dashboard</a>
+  </div>
+</body>
+</html>

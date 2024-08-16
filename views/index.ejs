@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    .category-container {
+      border: 2px solid #ccc;
+      padding: 20px;
+      margin: 10px 0;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+
+    .category-title {
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .property-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .property-item {
+      margin-bottom: 10px;
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+    }
+
+    .property-item img {
+      max-width: 150px;
+      height: auto;
+      margin-right: 10px;
+    }
+
+    .property-item div {
+      flex: 1;
+    }
+
+    .property-item strong {
+      display: block;
+      font-size: 18px;
+    }
+
+    form {
+      margin: 20px 0;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+
+    form label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+
+    form input {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    form button {
+      padding: 10px 15px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #0056b3;
+    }
+
+    .dev {
+      margin-top: 20px;
+    }
+
+    .developer {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #fff;
+    }
+
+    .developer h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Properties <a href="/admin" style="text-decoration: none; color: #007bff;">Add</a></h1>
+
+    <div class="category-container">
+      <div class="category-title">Spotlight</div>
+      <ul class="property-list">
+        <% properties.spotlight.forEach(property=> { %>
+          <li class="property-item">
+            <% if (property.imageUrl) { %>
+              <img src="<%= property.imageUrl %>" alt="Image of <%= property.name %>">
+              <% } else { %>
+                <img src="placeholder-image-url.jpg" alt="Placeholder Image">
+                <% } %>
+                  <div>
+                    <strong>
+                      <%= property.name %>
+                    </strong>
+                    <p>
+                      <%= property.description %>
+                    </p>
+                    <p>$<%= property.price %>
+                    </p>
+                    <% if (property.land) { %>
+                      <p>Land: <%= property.land %>
+                      </p>
+                      <% } %>
+                  </div>
+          </li>
+          <% }) %>
+      </ul>
+    </div>
+
+    <div class="category-container">
+      <div class="category-title">Trending Residences</div>
+      <ul class="property-list">
+        <% properties.trendingResidences.forEach(property=> { %>
+          <li class="property-item">
+            <% if (property.imageUrl) { %>
+              <img src="<%= property.imageUrl %>" alt="Image of <%= property.name %>">
+              <% } else { %>
+                <img src="placeholder-image-url.jpg" alt="Placeholder Image">
+                <% } %>
+                  <div>
+                    <strong>
+                      <%= property.name %>
+                    </strong>
+                    <p>
+                      <%= property.description %>
+                    </p>
+                    <p>$<%= property.price %>
+                    </p>
+                  </div>
+          </li>
+          <% }) %>
+      </ul>
+    </div>
+
+    <div class="category-container">
+      <div class="category-title">SIGNATURE Developments</div>
+      <ul class="property-list">
+        <% properties.signatureDevelopments.forEach(property=> { %>
+          <li class="property-item">
+            <% if (property.imageUrl) { %>
+              <img src="<%= property.imageUrl %>" alt="Image of <%= property.name %>">
+              <% } else { %>
+                <img src="placeholder-image-url.jpg" alt="Placeholder Image">
+                <% } %>
+                  <div>
+                    <strong>
+                      <%= property.name %>
+                    </strong>
+                    <p>
+                      <%= property.description %>
+                    </p>
+                    <p>$<%= property.price %>
+                    </p>
+                    <% if (property.land) { %>
+                      <p>Land: $<%= property.land %>
+                      </p>
+                      <% } %>
+                        <% if (property.residence) { %>
+                          <p>Residence: $<%= property.residence %>
+                          </p>
+                          <% } %>
+                  </div>
+          </li>
+          <% }) %>
+      </ul>
+    </div>
+
+    <form action="/add-user" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required><br>
+      <label for="number">Number:</label>
+      <input type="text" id="number" name="number" required><br>
+      <button type="submit">Add User</button>
+    </form>
+
+    <h2>Developers</h2>
+    <div class="dev">
+      <% developers.forEach(developer=> { %>
+        <div class="developer">
+          <h3>
+            <%= developer.name %>
+          </h3>
+          <p>
+            <a href="/admin/developer/<%= developer._id %>">
+              <img src="<%= developer.logo %>" alt="Image of <%= developer.name %>">
+            </a>
+          </p>
+        </div>
+        <% }) %>
+
+    </div>
+
+  </div>
+  <div class="test">
+    <h1>Testimonies</h1>
+    <% tests.forEach(test => { %>
+      <div class="test-item">
+        <h3><%= test.name %></h3>
+        <p><%= test.longDescription %></p>
+        <p><strong>City Present:</strong> <%= test.cityPresent %></p>
+        <% if (test.logo) { %>
+          <img src="<%= test.logo %>" alt="<%= test.name %>" style="width: 100px; height: auto;">
+        <% } %>
+      </div>
+    <% }) %>
+  </div>
+  
+</body>
+
+</html>
